@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Employee Directory</title>
+    
 
     <!-- Add jQuery JavaScript -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>    
@@ -13,6 +13,12 @@
 
     <!-- Our Employee table initialization code -->
     <script>
+        $(document).ready(function() {
+        // Check if the DataTable instance already exists
+        if ($.fn.DataTable.isDataTable('#employeesTable')) {
+            // If the table is already initialized, destroy it first
+            $('#employeesTable').DataTable().destroy();
+        }
         $(document).ready(function() {
             $('#employeesTable').DataTable({
                 processing: true,

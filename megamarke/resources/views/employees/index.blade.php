@@ -14,12 +14,6 @@
     <!-- Our Employee table initialization code -->
     <script>
         $(document).ready(function() {
-        // Check if the DataTable instance already exists
-        if ($.fn.DataTable.isDataTable('#employeesTable')) {
-            // If the table is already initialized, destroy it first
-            $('#employeesTable').DataTable().destroy();
-        }
-        $(document).ready(function() {
             $('#employeesTable').DataTable({
                 processing: true,
                 serverSide: true,
@@ -33,6 +27,16 @@
                 ],
                 responsive: true
             });
+            // Check if the DataTable instance already exists
+            if ($.fn.DataTable.isDataTable('#employeesTable')) {
+            // If the table is already initialized, destroy it first
+            $('#employeesTable').DataTable().destroy();
+            // Reinitialize DataTable
+            initializeDataTable();
+            } else {
+            // Initialize DataTable for the first time
+            initializeDataTable();
+            }
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
